@@ -1,0 +1,76 @@
+<%- include('template/header') %>
+
+    <body>
+        <h1 class="container mx-auto text-3xl my-4"> Resultados obtenidos </h1>
+        <div class="container mx-auto">
+            <table id="allData" class="">
+                <thead>
+                    <tr>
+                        <th class="text-xs">Marca</th>
+                        <th class="text-xs">Circulación</th>
+                        <th class="text-xs">Plataformas</th>
+                        <th class="text-xs">Url</th>
+                        <th class="text-xs">Texto</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% if (data.length> 0) { %>
+                        <% data.forEach((ad)=> { %>
+                            <tr class="border-b-2 border-gray-300">
+                                <td class="p-1 text-center text-xs">
+                                    <%= ad.marca %>
+                                </td>
+                                <td class="p-1 text-center text-xs">
+                                    <%= ad.fecha %>
+                                </td>
+                                <td class="p-1 text-center text-xs">
+                                    <ul class="list-disc">
+                                        <% ad.plataformas.forEach(et=> { %>
+                                            <li>
+                                                <%= et %>
+                                            </li>
+                                            <% }) %>
+                                    </ul>
+                                </td>
+                                <td class="p-1 text-justify text-xs">
+                                    <ul class="list-disc">
+                                        <% ad.url.forEach(et=> { %>
+                                            <li>
+                                                <%= et %>
+                                            </li>
+                                            <% }) %>
+                                    </ul>
+                                </td>
+                                <td class="p-1 text-justify text-xs">
+                                    <%= ad.texto %>
+                                </td>
+                            </tr>
+                            <% }) %>
+                                <% } %>
+                </tbody>
+            </table>
+
+
+        </div>
+    </body>
+    <script>
+        $(document).ready(function () {
+            $('#allData').DataTable({
+                dom: 'Bfrtip',
+                lengthMenu: [
+                    [10, 25, 50, -1],
+                    ['10 rows', '25 rows', '50 rows', 'Show all']
+                ],
+                buttons: [
+                    'csv', 'excel', 'pdf', 'print', 'pageLength'
+                ]
+            });
+        });
+    </script>
+    <style>
+        table.dataTable tbody tr.odd {
+            background-color: darkgray;
+        }
+    </style>
+
+    </html>
