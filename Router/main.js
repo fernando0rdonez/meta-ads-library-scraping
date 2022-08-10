@@ -46,7 +46,7 @@ router.get("/procesing", async (req, res) => {
                 height: 800
             });
             await page.goto(body.urls);
-            await page.waitForSelector('._9cb_');
+            await page.waitForSelector('._99s5');
             await autoScroll(page);
             await page.screenshot({ path: 'screen.jpg', fullPage: true })
             const elementos = await page.evaluate(() => {
@@ -128,7 +128,7 @@ router.get("/procesing", async (req, res) => {
                 // await page.goto(body.urls);
                 await page.goto(page_item);
                 try {
-                    await page.waitForSelector('._9cb_', { timeout: 5000 });
+                    await page.waitForSelector('._99s5', { timeout: 5000 });
                 } catch (error) {
                     page.close();
                     continue;
