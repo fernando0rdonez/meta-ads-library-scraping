@@ -82,8 +82,11 @@ async function getData( url, browser){
             var item = {};
             var content = element.querySelectorAll('.mfn553m3');
             var date = content[1].querySelector('span').innerText
-            var marca = element.querySelector('.aglvbi8b');
-            var strMarca = marca.querySelector('span').innerText; //Encontrar marca
+            var imageMarcaConten = element.querySelector('div._7jyg');
+
+            var marca = imageMarcaConten.querySelector('span.aeinzg81');
+            console.log(marca);
+            var strMarca =  marca.innerText; //Encontrar marca
 
             var content_str = element.querySelectorAll('._4ik4');
             var descripcion = '';
@@ -109,15 +112,15 @@ async function getData( url, browser){
             }
 
             /// Encontrar platadormas 
-            var conten_plataform = element.querySelectorAll('.jwy3ehce'); // obtreniendo imagenes
+            var conten_plataform = element.querySelectorAll('.n7mw1l6l'); // obtreniendo imagenes
             var plataformas = [];
             conten_plataform.forEach(pfm => {
                 var mask_value = pfm.style.webkitMaskPosition;
                 switch (mask_value) {
-                    case '-108px -230px':
+                    case '0px -909px':
                         plataformas.push('Facebook');
                         break;
-                    case '-19px -673px':
+                    case '-17px -790px':
                         plataformas.push('Instagram');
                         break;
                     case '-17px -66px':
