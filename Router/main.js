@@ -72,20 +72,19 @@ async function getData( url, browser){
         height: 800
     });
     await page.goto(url);
-    await page.waitForSelector('._99s5');
+    let contentElements = '._99s6'
+    await page.waitForSelector(contentElements);
     await autoScroll(page);
     await page.screenshot({ path: 'screen.jpg', fullPage: true })
     const elementos = await page.evaluate(() => {
-        const elemento = document.querySelectorAll('._99s5');
+        const elemento = document.querySelectorAll('._99s6');
         const objetos = [];
         elemento.forEach((element, key, arr) => {
             var item = {};
-            var content = element.querySelectorAll('.mfn553m3');
+            var content = element.querySelectorAll('.x1e56ztr');
             var date = content[1].querySelector('span').innerText
             var imageMarcaConten = element.querySelector('div._7jyg');
-
-            var marca = imageMarcaConten.querySelector('span.aeinzg81');
-            console.log(marca);
+            var marca = imageMarcaConten.querySelector('span.x8t9es0');
             var strMarca =  marca.innerText; //Encontrar marca
 
             var content_str = element.querySelectorAll('._4ik4');
@@ -97,7 +96,7 @@ async function getData( url, browser){
             }
 
 
-            content = element.querySelectorAll('._7jys'); // obtreniendo imagenes
+            content = element.querySelectorAll('.x1ll5gia'); // obtreniendo imagenes
             var urlsArray = [];
             content.forEach(elmt => {
                 urlsArray.push(elmt.src);
@@ -112,7 +111,8 @@ async function getData( url, browser){
             }
 
             /// Encontrar platadormas 
-            var conten_plataform = element.querySelectorAll('.n7mw1l6l'); // obtreniendo imagenes
+            var conten_plataform = element.querySelectorAll('.xtwfq29'); // obtreniendo imagenes
+            console.log(conten_plataform);
             var plataformas = [];
             conten_plataform.forEach(pfm => {
                 var mask_value = pfm.style.webkitMaskPosition;
@@ -142,6 +142,7 @@ async function getData( url, browser){
             item.url = urlsArray;
             item.texto = descripcion;
             objetos.push(item);
+            
         });
         return objetos;
     });
